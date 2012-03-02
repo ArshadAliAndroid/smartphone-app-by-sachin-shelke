@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, CustomListDemoActivity!</string>
+    <string name="app_name">CustomListDemo</string>
+    
+    
+    
+    
+    <!-- Colors -->
+    
+    <color name="white">#FFFFFF</color>
+    <color name="transperent">#00000000</color>
+    
+
+</resources>
