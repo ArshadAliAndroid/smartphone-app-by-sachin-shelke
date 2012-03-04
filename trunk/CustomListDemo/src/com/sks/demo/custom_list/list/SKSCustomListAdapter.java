@@ -7,8 +7,8 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.BaseAdapter;
 import android.widget.SectionIndexer;
 
-public abstract class RealStateAdapter extends BaseAdapter implements SectionIndexer, OnScrollListener {
-	public static final String TAG = RealStateAdapter.class.getSimpleName();
+public abstract class SKSCustomListAdapter extends BaseAdapter implements SectionIndexer, OnScrollListener {
+	public static final String TAG = SKSCustomListAdapter.class.getSimpleName();
 
 	public interface HasMorePagesListener {
 		void noMorePages();
@@ -89,8 +89,8 @@ public abstract class RealStateAdapter extends BaseAdapter implements SectionInd
     
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-		if (view instanceof RealStateListView) {
-			((RealStateListView) view).configureHeaderView(firstVisibleItem);
+		if (view instanceof SKSCustomListView) {
+			((SKSCustomListView) view).configureHeaderView(firstVisibleItem);
 		}
 	}
 
@@ -127,7 +127,7 @@ public abstract class RealStateAdapter extends BaseAdapter implements SectionInd
 	
 	/**
 	 * The last item on the list is requested to be seen, so do the request 
-	 * and call {@link RealStateListView#tellNoMoreData()} if there is no more pages.
+	 * and call {@link SKSCustomListView#tellNoMoreData()} if there is no more pages.
 	 * 
 	 * @param page the page number to load.
 	 */
