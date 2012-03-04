@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.sks.demo.custom_list.list.RealStateAdapter.HasMorePagesListener;
+import com.sks.demo.custom_list.list.SKSCustomListAdapter.HasMorePagesListener;
 
 /**
  * A ListView that maintains a header pinned at the top of the list. The pinned
@@ -16,7 +16,7 @@ import com.sks.demo.custom_list.list.RealStateAdapter.HasMorePagesListener;
  * It also supports pagination by setting a custom view as the loading
  * indicator.
  */
-public class RealStateListView extends ListView implements HasMorePagesListener {
+public class SKSCustomListView extends ListView implements HasMorePagesListener {
 
 	View listFooter;
 	boolean footerViewAttached = false;
@@ -27,7 +27,7 @@ public class RealStateListView extends ListView implements HasMorePagesListener 
 	private int mHeaderViewWidth;
 	private int mHeaderViewHeight;
 
-	private RealStateAdapter adapter;
+	private SKSCustomListAdapter adapter;
 
 	public void setPinnedHeaderView(View view) {
 		mHeaderView = view;
@@ -70,12 +70,12 @@ public class RealStateListView extends ListView implements HasMorePagesListener 
 
 		int state = adapter.getPinnedHeaderState(position);
 		switch (state) {
-		case RealStateAdapter.PINNED_HEADER_GONE: {
+		case SKSCustomListAdapter.PINNED_HEADER_GONE: {
 			mHeaderViewVisible = false;
 			break;
 		}
 
-		case RealStateAdapter.PINNED_HEADER_VISIBLE: {
+		case SKSCustomListAdapter.PINNED_HEADER_VISIBLE: {
 			adapter.configurePinnedHeader(mHeaderView, position, 255);
 			if (mHeaderView.getTop() != 0) {
 				mHeaderView.layout(0, 0, mHeaderViewWidth, mHeaderViewHeight);
@@ -84,7 +84,7 @@ public class RealStateListView extends ListView implements HasMorePagesListener 
 			break;
 		}
 
-		case RealStateAdapter.PINNED_HEADER_PUSHED_UP: {
+		case SKSCustomListAdapter.PINNED_HEADER_PUSHED_UP: {
 			View firstView = getChildAt(0);
 			if (firstView != null) {
 				int bottom = firstView.getBottom();
@@ -118,15 +118,15 @@ public class RealStateListView extends ListView implements HasMorePagesListener 
 		
 	}
 
-	public RealStateListView(Context context) {
+	public SKSCustomListView(Context context) {
 		super(context);
 	}
 
-	public RealStateListView(Context context, AttributeSet attrs) {
+	public SKSCustomListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 
-	public RealStateListView(Context context, AttributeSet attrs, int defStyle) {
+	public SKSCustomListView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
 
@@ -140,9 +140,9 @@ public class RealStateListView extends ListView implements HasMorePagesListener 
 
 	@Override
 	public void setAdapter(ListAdapter adapter) {
-		if (!(adapter instanceof RealStateAdapter)) {
-			throw new IllegalArgumentException(RealStateListView.class.getSimpleName() + " must use adapter of type "
-					+ RealStateAdapter.class.getSimpleName());
+		if (!(adapter instanceof SKSCustomListAdapter)) {
+			throw new IllegalArgumentException(SKSCustomListView.class.getSimpleName() + " must use adapter of type "
+					+ SKSCustomListAdapter.class.getSimpleName());
 		}
 
 		// previous adapter
@@ -151,9 +151,9 @@ public class RealStateListView extends ListView implements HasMorePagesListener 
 			this.setOnScrollListener(null);
 		}
 
-		this.adapter = (RealStateAdapter) adapter;
-		((RealStateAdapter) adapter).setHasMorePagesListener(this);
-		this.setOnScrollListener((RealStateAdapter) adapter);
+		this.adapter = (SKSCustomListAdapter) adapter;
+		((SKSCustomListAdapter) adapter).setHasMorePagesListener(this);
+		this.setOnScrollListener((SKSCustomListAdapter) adapter);
 
 		View dummy = new View(getContext());
 		super.addFooterView(dummy);
@@ -162,7 +162,7 @@ public class RealStateListView extends ListView implements HasMorePagesListener 
 	}
 
 	@Override
-	public RealStateAdapter getAdapter() {
+	public SKSCustomListAdapter getAdapter() {
 		return adapter;
 	}
 

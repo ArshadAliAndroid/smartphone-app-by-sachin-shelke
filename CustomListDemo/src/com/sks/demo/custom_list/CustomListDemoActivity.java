@@ -14,12 +14,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
-import com.sks.demo.custom_list.list.RealStateAdapter;
-import com.sks.demo.custom_list.list.RealStateListView;
+import com.sks.demo.custom_list.list.SKSCustomListAdapter;
+import com.sks.demo.custom_list.list.SKSCustomListView;
 
 public class CustomListDemoActivity extends Activity {
 
-	RealStateListView lsComposer;
+	SKSCustomListView lsComposer;
 	SectionComposerAdapter adapter;
 
 	Context context;
@@ -36,7 +36,7 @@ public class CustomListDemoActivity extends Activity {
 	@Override
 	protected void onStart() {
 
-		((TextView) findViewById(R.id.title)).setText("Services");
+		
 
 		super.onStart();
 		initializedView();
@@ -46,7 +46,7 @@ public class CustomListDemoActivity extends Activity {
 
 	private void initializedView() {
 
-		lsComposer = (RealStateListView) findViewById(R.id.list_services);
+		lsComposer = (SKSCustomListView) findViewById(R.id.list_services);
 	}
 
 	private void setupFunctionality() {
@@ -84,7 +84,7 @@ public class CustomListDemoActivity extends Activity {
 		// titleBack.setOnClickListener(this);
 	}
 
-	class SectionComposerAdapter extends RealStateAdapter {
+	class SectionComposerAdapter extends SKSCustomListAdapter {
 		List<Pair<String, List<Composer>>> all = Data.getAllData();
 
 		@Override
@@ -141,7 +141,7 @@ public class CustomListDemoActivity extends Activity {
 
 			Composer composer = getItem(position);
 			lName.setText(composer.name);
-			lYear.setText(composer.year);
+			lYear.setText("Population : " + composer.year);
 
 			return res;
 		}

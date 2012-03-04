@@ -34,7 +34,7 @@ public class Data {
 			return new Pair<Boolean, List<Composer>>(true, flattenedData.subList(0, 5));
 		} else {
 			SystemClock.sleep(2000); // simulate loading
-			return new Pair<Boolean, List<Composer>>(page * 5 < flattenedData.size(), flattenedData.subList((page - 1) * 5,
+			return new Pair<Boolean, List<Composer>>(page * 5 < flattenedData.size(), flattenedData.subList((page) * 5,
 					Math.min(page * 5, flattenedData.size())));
 		}
 	}
@@ -42,44 +42,44 @@ public class Data {
 	public static Pair<String, List<Composer>> getOneSection(int index) {
 		String[] titles =
 		{
-				"Carpenter",
-				"Electrician",
-				"Plumber",
-				"Painter"
+				"Maharashtra",
+				"Gujarat",
+				"Jammu",
+				"Punjab"
 		};
 		Composer[][] composerss =
 		{
 				{
-						new Composer("Carpenter - 1", "Swarget"),
-						new Composer("Carpenter - 2", "Nigdi"),
-						new Composer("Carpenter - 3", "Shivaji Nagar"),
-						new Composer("Carpenter - 4", "Nigdi"),
-						new Composer("Carpenter - 5", "Kothrud"),
-						new Composer("Carpenter - 6", "SB Road"),
+						new Composer("Amravati", "2,607,160"),
+						new Composer("Aurangabad", "2,897,103"),
+						new Composer("Khandala", "21,043"),
+						new Composer("Mumbai", "11,914,398"),
+						new Composer("Nagpur", "2,420,000"),
+						new Composer("Pune", "4,485,000"),
 				},
 				{
-						new Composer("Electrician - 1", "Swarget"),
-						new Composer("Electrician - 2", "Nigdi"),
-						new Composer("Electrician - 3", "Shivaji Nagar"),
-						new Composer("Electrician - 4", "Nigdi"),
-						new Composer("Electrician - 5", "Kothrud"),
-						new Composer("Electrician - 6", "SB Road"),
+						new Composer("Ahmedabad", "3,913,793"),
+						new Composer("Surat", "3,344,135"),
+						new Composer("Vadodara", "1,513,758"),
+						new Composer("Rajkot", "1,395,026"),
+						new Composer("Gandhinagar", "271,331"),
+						new Composer("Bhavnagar", "600,594"),
 				},
 				{
-						new Composer("Plumber - 1", "Swarget"),
-						new Composer("Plumber - 2", "Nigdi"),
-						new Composer("Plumber - 3", "Shivaji Nagar"),
-						new Composer("Plumber - 4", "Nigdi"),
-						new Composer("Plumber - 5", "Kothrud"),
-						new Composer("Plumber - 6", "SB Road"),
+						new Composer("Kathua", "550,084"),
+						new Composer("Jammu", "1,343,756"),
+						new Composer("Samba", "245,016"),
+						new Composer("Udhampur", "475,068"),
+						new Composer("Reasi", "268,441"),
+						new Composer("Rajouri", "483,284"),
 				},
 				{
-						new Composer("Painter - 1", "Swarget"),
-						new Composer("Painter - 2", "Nigdi"),
-						new Composer("Painter - 3", "Shivaji Nagar"),
-						new Composer("Painter - 4", "Nigdi"),
-						new Composer("Painter - 5", "Kothrud"),
-						new Composer("Painter - 6", "SB Road"),
+						new Composer("Amritsar", "1,183,705"),
+						new Composer("Firozpur", "110,091"),
+						new Composer("Ludhiana", "1,613,878"),
+						new Composer("Chandigarh", "27,704,236"),
+						new Composer("Jalandhar ", "873,725"),
+						new Composer("Patiala", "445,196"),
 				},
 		};
 		return new Pair<String, List<Composer>>(titles[index], Arrays.asList(composerss[index]));
