@@ -108,7 +108,7 @@ public class CustomListItemDemoActivity extends Activity {
 				LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				listItemView = layoutInflater.inflate(R.layout.custom_list_item_layout, null);
 			}
-			String[] details = items.get(position);
+			final String[] details = items.get(position);
 			if (details != null) {
 				final TextView course = (TextView) listItemView.findViewById(R.id.course);
 				TextView university = (TextView) listItemView.findViewById(R.id.university);
@@ -125,12 +125,15 @@ public class CustomListItemDemoActivity extends Activity {
 					year.setText(details[2]);
 				}
 				if (per != null) {
+
+					per.setText("Click");
+
 					per.setOnClickListener(new OnClickListener() {
 
 						@Override
 						public void onClick(View v) {
 
-							Toast.makeText(getApplicationContext(), "Course : " + course.getText().toString(), Toast.LENGTH_SHORT).show();
+							Toast.makeText(getApplicationContext(), "Percentile : " + details[3], Toast.LENGTH_SHORT).show();
 
 						}
 					});
