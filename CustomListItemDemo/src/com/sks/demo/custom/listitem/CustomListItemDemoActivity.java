@@ -7,10 +7,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CustomListItemDemoActivity extends Activity {
 
@@ -20,8 +23,7 @@ public class CustomListItemDemoActivity extends Activity {
 
 	/** Called when the activity is first created. */
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
@@ -34,18 +36,52 @@ public class CustomListItemDemoActivity extends Activity {
 
 	}
 
-	
-//	Sample Data
-	
-	private ArrayList<String[]> setDetails()
-	{
+	// Sample Data
+
+	private ArrayList<String[]> setDetails() {
 		ArrayList<String[]> dtl = new ArrayList<String[]>();
-		String[] edu1 = { "MCA", "University of Pune", "2010", "70.00" };
-		String[] edu2 = { "BCA", "University of Pune", "2007", "66.66" };
-		String[] edu3 = { "HSC", "Maharashtra", "2004", "77.77" };
-		String[] edu4 = { "SSC", "University of Pune", "2010", "70.00" };
-		String[] edu5 = { "Diploma", "SMU", "2010", "99.99" };
-		String[] edu6 = { "XYZ", "USA", "2012", "99.99" };
+		String[] edu1 =
+		{
+				"MCA",
+				"University of Pune",
+				"2010",
+				"70.00"
+		};
+		String[] edu2 =
+		{
+				"BCA",
+				"University of Pune",
+				"2007",
+				"66.66"
+		};
+		String[] edu3 =
+		{
+				"HSC",
+				"Maharashtra",
+				"2004",
+				"77.77"
+		};
+		String[] edu4 =
+		{
+				"SSC",
+				"University of Pune",
+				"2010",
+				"70.00"
+		};
+		String[] edu5 =
+		{
+				"Diploma",
+				"SMU",
+				"2010",
+				"99.99"
+		};
+		String[] edu6 =
+		{
+				"XYZ",
+				"USA",
+				"2012",
+				"99.99"
+		};
 		dtl.add(edu1);
 		dtl.add(edu2);
 		dtl.add(edu3);
@@ -60,44 +96,44 @@ public class CustomListItemDemoActivity extends Activity {
 
 		private ArrayList<String[]> items;
 
-		public SKSAdapter(Context context, int textViewResourceId, ArrayList<String[]> items)
-		{
+		public SKSAdapter(Context context, int textViewResourceId, ArrayList<String[]> items) {
 			super(context, textViewResourceId, items);
 			this.items = items;
 		}
 
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent)
-		{
+		public View getView(int position, View convertView, ViewGroup parent) {
 			View listItemView = convertView;
-			if (listItemView == null)
-			{
+			if (listItemView == null) {
 				LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				listItemView = layoutInflater.inflate(R.layout.custom_list_item_layout, null);
 			}
 			String[] details = items.get(position);
-			if (details != null)
-			{
-				TextView course = (TextView) listItemView.findViewById(R.id.course);
+			if (details != null) {
+				final TextView course = (TextView) listItemView.findViewById(R.id.course);
 				TextView university = (TextView) listItemView.findViewById(R.id.university);
 				TextView year = (TextView) listItemView.findViewById(R.id.year);
-				TextView per = (TextView) listItemView.findViewById(R.id.per);
+				Button per = (Button) listItemView.findViewById(R.id.per);
 
-				if (course != null)
-				{
+				if (course != null) {
 					course.setText(details[0]);
 				}
-				if (university != null)
-				{
+				if (university != null) {
 					university.setText(details[1]);
 				}
-				if (year != null)
-				{
+				if (year != null) {
 					year.setText(details[2]);
 				}
-				if (per != null)
-				{
-					per.setText(details[3]);
+				if (per != null) {
+					per.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+
+							Toast.makeText(getApplicationContext(), "Course : " + course.getText().toString(), Toast.LENGTH_SHORT).show();
+
+						}
+					});
 				}
 			}
 			return listItemView;
